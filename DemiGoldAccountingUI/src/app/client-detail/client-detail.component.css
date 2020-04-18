@@ -1,0 +1,60 @@
+.green-row {
+  background-color: #7fda76;
+}
+
+.red-row {
+  background-color: #f7b1b1;
+}
+
+.demi-gold-profit {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.profit-header {
+  margin-left: 10px;
+  float: right;
+}
+
+.transaction-functionality-button {
+  padding: 8px 10px;
+  font-size: 18px;
+  background: #fffa8a;
+  border: 1px solid yellow;
+  border-radius: 5px;
+  margin-top: 14px;
+  margin-right: 12px;
+  margin-bottom: 10px;
+  outline: none;
+}
+
+.transaction-functionality-button:hover {
+  border: 1px solid black;
+  background: #fff200;
+}
+
+#client-header {
+  text-align: center;
+}
+
+.pre-content {
+  float: right;
+  height: 65px;
+}
+
+.select-download-type {
+  padding: 8px;
+  font-size: 18px;
+}
+
+.help {
+  position: relative;
+  width: 40px;
+  height: auto;
+  top: 14px;
+  opacity: 0.5;
+}
+
+.help:hover {
+  opacity: 1;
+}

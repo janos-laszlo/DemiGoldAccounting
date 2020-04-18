@@ -1,0 +1,27 @@
+<div id="demi-gold-navbar">
+  <div id="navbar-content">
+    <ul>
+      <li>
+        <a routerLink="/overview" appTranslation="HomePageLink">Acasă</a>
+      </li>
+      <li class="demi-gold-languages">
+        <div class="selected-language">
+          <img src="assets/img/{{selectedLanguage.icon}}" [alt]="selectedLanguage.name" class="flag-icon">
+          <span class="country-name">{{selectedLanguage.name}}</span>
+          <div class="down-arrow-container">
+            <i class="down-arrow"></i>
+          </div>
+        </div>
+        <div class="dropdown-content">
+          <div *ngFor="let language of languages" (click)="setLanguage(language.id)">
+            <img src="assets/img/{{language.icon}}" [alt]="language.name" class="flag-icon">
+            <span class="country-name">{{language.name}}</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div style="height: 50px"></div>
+<ngx-spinner id="my-spinner" bdColor="rgba(245,245,131,0.5)" size="large" color="#c5bf28" type="ball-climbing-dot"></ngx-spinner>
+<router-outlet></router-outlet>

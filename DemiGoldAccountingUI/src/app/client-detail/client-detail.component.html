@@ -1,0 +1,192 @@
+<div style="padding: 0 5px;">
+  <input
+    type="file"
+    id="import-from-csv"
+    accept=".csv"
+    style="display:none"
+    (change)="handleCsvImportFile($event)"
+  />
+  <button
+    type="button"
+    (click)="openCsvImportDialog($event)"
+    class="transaction-functionality-button"
+    appTranslation="ImportFromCSV"
+  >
+    Import from CSV
+  </button>
+  <img
+    src="../../assets/img/help.png"
+    class="help"
+    (click)="showCsvExample()"
+  />
+  <div class="pre-content">
+    <button
+      type="button"
+      (click)="download()"
+      class="transaction-functionality-button"
+      appTranslation="Download"
+    >
+      Descarcă
+    </button>
+    <select [(ngModel)]="downloadType" class="select-download-type">
+      <option [value]="PDF">{{ PDF }}</option>
+      <option [value]="CSV">{{ CSV }}</option>
+    </select>
+  </div>
+</div>
+<table id="clients">
+  <thead>
+    <tr>
+      <th colspan="5" id="client-header">
+        <span style="float: left">
+          {{ client.clientName }}
+        </span>
+        <span *ngIf="transactions.length" class="profit-header">
+          <span appTranslation="Profit"></span>
+          =
+          <span
+            [class]="
+              'demi-gold-profit ' + (profit > 0 ? 'green-row' : 'red-row')
+            "
+          >
+            {{ profit > 0 ? "+" + profit.toFixed(2) : profit.toFixed(2) }}
+          </span>
+        </span>
+      </th>
+    </tr>
+    <tr>
+      <th appTranslation="TransactionType">Tip</th>
+      <th appTranslation="Amount">Sumă</th>
+      <th appTranslation="Date">Data</th>
+      <th appTranslation="Description">Descriere</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tr
+    *ngFor="let transaction of transactions"
+    [class]="getTransactionColor(transaction)"
+  >
+    <td appTranslation="{{ transaction.type }}"></td>
+    <td>{{ transaction.amount.toFixed(2) }}</td>
+    <td>{{ transaction.createdOn | date: "yyyy.MM.dd" }}</td>
+    <td>{{ transaction.description }}</td>
+    <td
+      class="demi-gold-remove-table-row"
+      (click)="openRemovalConfirmationDialog(transaction.id)"
+    >
+      <img src="assets/img/eraser.png" alt="delete" class="demi-gold-eraser" />
+    </td>
+  </tr>
+</table>
+
+<div id="demi-gold-add-client-content">
+  <h3 appTranslation="AddTransaction">Adaugă tranzacție</h3>
+  <form action="">
+    <div class="demi-gold-add-client-element">
+      <label
+        for="demi-gold-add-transaction-amount"
+        class="demi-gold-add-client-label"
+        appTranslation="Amount"
+        >Suma:</label
+      >
+      <input
+        id="demi-gold-add-transaction-amount"
+        name="transactionAmount"
+        class="demi-gold-input-element"
+        type="number"
+        [(ngModel)]="transactionModel.amount"
+      />
+    </div>
+
+    <div class="demi-gold-add-client-element">
+      <label
+        for="demi-gold-add-transaction-type"
+        class="demi-gold-add-client-label"
+        appTranslation="Type"
+        >Tip:</label
+      >
+      <select
+        id="demi-gold-add-transaction-type"
+        name="transactionType"
+        class="demi-gold-option-element"
+        [(ngModel)]="transactionModel.transactionTypeId"
+        (change)="onTransactionTypeChange()"
+      >
+        <option
+          *ngFor="let transactionType of transactionTypes"
+          [value]="transactionType.id"
+          appTranslation="{{ transactionType.name }}"
+        ></option>
+      </select>
+    </div>
+
+    <div
+      *ngIf="
+        transactionTypes.length &&
+        transactionModel.transactionTypeId == getSalarTransactionTypeId()
+      "
+      class="demi-gold-add-client-element"
+    >
+      <label
+        for="demi-gold-add-transaction-type"
+        class="demi-gold-add-client-label"
+        appTranslation="Employee"
+        >Angajat:</label
+      >
+      <select
+        id="demi-gold-add-transaction-type"
+        name="employeeName"
+        class="demi-gold-option-element"
+        [(ngModel)]="transactionModel.employeeId"
+      >
+        <option *ngFor="let employee of employees" [value]="employee.id">{{
+          employee.name
+        }}</option>
+      </select>
+    </div>
+
+    <div class="demi-gold-add-client-element">
+      <label
+        for="demi-gold-add-transaction-description"
+        class="demi-gold-add-client-label"
+        appTranslation="Description"
+        >Descriere:</label
+      >
+      <input
+        id="demi-gold-add-transaction-description"
+        name="transactionDescription"
+        class="demi-gold-input-element"
+        type="text"
+        [(ngModel)]="transactionModel.description"
+      />
+    </div>
+
+    <div class="demi-gold-add-client-element">
+      <label
+        for="demi-gold-add-transaction-date"
+        class="demi-gold-add-client-label"
+        appTranslation="Date"
+        >Data:</label
+      >
+      <input
+        name="transactionCreationDate"
+        [owlDateTime]="dt1"
+        [owlDateTimeTrigger]="dt1"
+        [(ngModel)]="transactionModel.createdOn"
+        [max]="getDateTimeNow()"
+        class="demi-gold-input-element"
+      />
+      <owl-date-time
+        [pickerMode]="'dialog'"
+        [pickerType]="'calendar'"
+        #dt1
+      ></owl-date-time>
+    </div>
+    <button
+      class="demi-gold-button demi-gold-add-entity-button"
+      (click)="addTransaction()"
+      appTranslation="Add"
+    ></button>
+  </form>
+</div>
+<app-scroll-down></app-scroll-down>

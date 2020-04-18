@@ -1,0 +1,208 @@
+body {
+  min-width: 512px;
+  max-width: 1024px;
+  margin: auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#demi-gold-navbar {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  z-index: 1;
+}
+
+#navbar-content {
+  min-width: 512px;
+  max-width: 1024px;
+  margin: auto;
+}
+
+#navbar-content ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #fffa8a;
+}
+
+#navbar-content li {
+  float: left;
+}
+
+#navbar-content li a {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+  color: black;
+}
+
+#navbar-content li a:hover,
+#navbar-content li .selected-language:hover {
+  background-color: #fff200;
+}
+
+.demi-gold-remove-table-row {
+  text-align: center;
+  background: #f7b1b1;
+  font-weight: bold;
+  width: 50px;
+}
+
+.demi-gold-remove-table-row:hover {
+  background: red;
+  color: white;
+  cursor: pointer;
+}
+
+.demi-gold-input-element {
+  position: relative;
+  padding: 5px;
+  border-radius: 5px;
+  width: calc(100% - 135px);
+  left: 60px;
+}
+
+.demi-gold-option-element {
+  position: relative;
+  padding: 5px;
+  border-radius: 5px;
+  width: calc(100% - 122px);
+  left: 60px;
+}
+
+.demi-gold-button {
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 20px;
+  background: #fffa8a;
+  border: 1px solid #fffa8a;
+}
+
+.demi-gold-add-entity-button {
+  width: 100%;
+}
+
+.demi-gold-button:hover {
+  background: #fff200;
+  border: 1px solid black;
+}
+
+.demi-gold-link {
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: solid;
+}
+
+.salary-transaction {
+  background: #5555f5;
+}
+
+.intense-red-cell {
+  background-color: red;
+}
+
+.intense-green-cell {
+  background-color: rgb(11, 236, 11);
+}
+
+#clients {
+  border-collapse: collapse;
+  width: calc(100% - 10px);
+  margin-left: 5px;
+}
+
+#clients tbody {
+  border-bottom: 2px solid black;
+}
+
+#clients tbody tr:last-child {
+  border-bottom: 2px solid black;
+}
+
+#clients td,
+#clients th {
+  border: 1px solid #ddd;
+  padding: 4px 8px;
+}
+
+#clients th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #fffa8a;
+  color: black;
+}
+
+#demi-gold-add-client-content {
+  padding: 0px 10px 10px 10px;
+  border: 2px solid #aaa428;
+  margin: 5px 5px 10px 5px;
+  border-radius: 5px;
+}
+
+.demi-gold-add-client-element {
+  margin-bottom: 10px;
+}
+
+.demi-gold-add-client-label {
+  display: inline-block;
+  width: 55px;
+}
+
+.demi-gold-eraser {
+  width: 40px;
+  height: auto;
+}
+
+.demi-gold-scroll-down {
+  position: fixed;
+  background-color: #e4ff00;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  z-index: 1;
+  right: 10px;
+  bottom: 10px;
+}
+
+.demi-gold-scroll-down:hover {
+  cursor: pointer;
+  background-color: #ffd900;
+}
+
+.demi-gold-scroll-down i {
+  margin-left: 17px;
+  margin-top: 18px;
+}
+
+.down-arrow {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  border: solid;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.demi-gold-arrow {
+  border: solid;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 6px;
+}
+
+.demi-gold-arrow-line {
+  position: absolute;
+  top: 9px;
+  left: 21.2px;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+#my-spinner .black-overlay{
+  position: fixed;
+}

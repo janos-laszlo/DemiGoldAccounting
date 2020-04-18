@@ -1,0 +1,16 @@
+<div class="login-form">
+  <div class="login-form-content">
+    <input
+      type="password"
+      placeholder="Password"
+      [(ngModel)]="password"
+      class="login-form-input"
+    />
+    <button
+      (click)="login()"
+      class="login-form-button"
+      appTranslation="LoginButton"
+    >Intră</button>
+    <p *ngIf="error" class="login-form-error">{{ error }}</p>
+  </div>
+</div>

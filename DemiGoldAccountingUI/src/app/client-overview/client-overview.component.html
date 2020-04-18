@@ -1,0 +1,153 @@
+<div id="demi-gold-content">
+  <select
+    id="demi-gold-client-type-selection"
+    [(ngModel)]="entityType"
+    (change)="onOptionChange()"
+  >
+    <option value="{{ CLIENTS }}" appTranslation="{{ CLIENTS }}"></option>
+    <option value="{{ EMPLOYEES }}" appTranslation="{{ EMPLOYEES }}"></option>
+  </select>
+
+  <!-- Clients -->
+  <div [hidden]="entityType !== CLIENTS">
+    <div #clientsForLoop *ngFor="let client of clients" class="client">
+      <div class="client-container">
+        <h3>
+          <a
+            routerLink="/transactions/{{ client.id }}"
+            [class]="DEMIGOLDLINK"
+            >{{ client.clientName }}</a
+          >
+        </h3>
+        <span
+          class="delete-icon"
+          (click)="openRemovalConfirmationDialog(client.id)"
+        ></span>
+        <div class="client-image-container">
+          <span class="center-helper"></span>
+          <img
+            [src]="client.profilePicture"
+            class="client-image"
+            alt="client image"
+          />
+          <input
+            type="file"
+            class="import-from-csv"
+            accept="image/png, image/jpeg, image/jpg"
+            style="display:none"
+            (change)="handleUploadProfilePicture($event, client.id)"
+          />
+          <img
+            src="../../assets/img/user-upload-profile-picture.png"
+            alt="upload profile picture"
+            class="upload-profile-picture"
+            (click)="openUploadProfilePicture($event)"
+          />
+        </div>
+      </div>
+      <div class="client-information">
+        <h4 appTranslation="TransactionSummary"></h4>
+        <div
+          *ngFor="let transactionTypeSummary of client.transactionTypeSummaries"
+          [class]="getTransactionSummaryColor(transactionTypeSummary)"
+        >
+          <span
+            appTranslation="{{ transactionTypeSummary.transactionType }}"
+          ></span>
+          <span class="price-tag">{{
+            transactionTypeSummary.amount.toFixed(2)
+          }}</span>
+        </div>
+        <div
+          [class]="
+            client.profit > 0
+              ? 'transaction-type intense-green-cell round-lower-border'
+              : 'transaction-type intense-red-cell round-lower-border'
+          "
+        >
+          <span appTranslation="Profit"></span>
+          <span class="price-tag">{{ client.profit.toFixed(2) }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Employees -->
+  <div [hidden]="entityType !== EMPLOYEES">
+    <div *ngFor="let employee of employees" class="employee">
+      <div>
+        <h3>
+          <span [class]="DEMIGOLDLINK">{{ employee.name }}</span>
+        </h3>
+        <span
+          class="delete-icon employee-delete-icon"
+          (click)="openRemovalConfirmationDialog(employee.id)"
+        ></span>
+        <div class="client-image-container employee-image-container">
+          <span class="center-helper"></span>
+          <img
+            [src]="employee.profilePicture"
+            class="client-image"
+            alt="client image"
+          />
+          <input
+            type="file"
+            class="import-from-csv"
+            accept="image/png, image/jpeg, image/jpg"
+            style="display:none"
+            (change)="handleUploadProfilePicture($event, employee.id)"
+          />
+          <img
+            src="../../assets/img/user-upload-profile-picture.png"
+            alt="upload profile picture"
+            class="upload-profile-picture employee-profile-picture-upload"
+            (click)="openUploadProfilePicture($event)"
+          />
+        </div>
+      </div>
+      <div>
+        <div
+          class="transaction-type salary-transaction given-to-employee round-border"
+        >
+          <span appTranslation="Given"></span>
+          <span class="price-tag">{{ employee.totalGiven.toFixed(2) }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="demi-gold-add-client-content">
+    <h3
+      appTranslation="{{
+        (entityType === EMPLOYEES && 'AddEmployee') ||
+          (entityType === CLIENTS && 'AddClient')
+      }}"
+    ></h3>
+    <form action="">
+      <div class="demi-gold-add-client-element">
+        <label
+          for="demi-gold-add-client-name"
+          class="demi-gold-add-client-label"
+          appTranslation="Name"
+          >Nume:</label
+        ><span style="font-weight: bold">:</span>
+        <input
+          id="demi-gold-add-client-name"
+          name="entityName"
+          class="demi-gold-input-element"
+          type="text"
+          maxlength="20"
+          [(ngModel)]="entityName"
+        />
+      </div>
+  
+      <button
+        class="demi-gold-button demi-gold-add-entity-button"
+        (click)="addEntity()"
+        appTranslation="Add"
+      >
+        Adaugă
+      </button>
+    </form>
+  </div>
+</div>
