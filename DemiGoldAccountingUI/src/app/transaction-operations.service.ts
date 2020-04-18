@@ -29,7 +29,7 @@ export class TransactionOperationsService {
       return operationResult;
     } else if (
       transactionModel.transactionTypeId ==
-        this.clientService.getTransactionTypeId(TransactionTypes.Salar) &&
+        this.clientService.getTransactionTypeId(TransactionTypes.Salary) &&
       (!transactionModel.employeeId || isNaN(transactionModel.employeeId))
     ) {
       operationResult.error = this.translationService.getTextFromCache("EC24");

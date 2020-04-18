@@ -73,8 +73,8 @@ namespace DemiGoldAccountingWebApi
                     builder => builder
                         .WithOrigins(
                             "http://localhost:4200",
-                            "http://demigoldaccounting.azurewebsites.net",
-                            "https://demigoldaccounting.azurewebsites.net",
+                            "http://demigold.eu-central-1.elasticbeanstalk.com",
+                            "https://demigold.eu-central-1.elasticbeanstalk.com",
                             "http://192.168.1.3:4200")
                         .AllowAnyHeader()
                         .AllowAnyMethod());

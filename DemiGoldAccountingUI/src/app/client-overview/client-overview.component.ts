@@ -89,7 +89,7 @@ export class ClientOverviewComponent implements OnInit {
   ): string {
     if (!transactionSummary) return "";
     let classes = "transaction-type";
-    if (transactionSummary.transactionType === TransactionTypes.Salar) {
+    if (transactionSummary.transactionType === TransactionTypes.Salary) {
       classes += " salary-transaction";
       return classes;
     }

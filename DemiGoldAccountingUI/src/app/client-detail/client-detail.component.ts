@@ -114,7 +114,7 @@ export class ClientDetailComponent implements OnInit {
   }
 
   getSalarTransactionTypeId(): number {
-    return this.clientService.getTransactionTypeId(TransactionTypes.Salar);
+    return this.clientService.getTransactionTypeId(TransactionTypes.Salary);
   }
 
   download() {
@@ -239,7 +239,7 @@ export class ClientDetailComponent implements OnInit {
   }
 
   getTransactionColor(transaction: ClientTransactionDetails): string {
-    if (transaction.type === TransactionTypes.Salar) {
+    if (transaction.type === TransactionTypes.Salary) {
       return "salary-transaction";
     }
 
@@ -325,7 +325,6 @@ export class ClientDetailComponent implements OnInit {
     this.transactionModel.amount = null;
     this.transactionModel.description = "";
     this.transactionModel.createdOn = null;
-    this.transactionModel.employeeId = null;
     this.transactionModel.transactionTypeId = 0;
   }
 

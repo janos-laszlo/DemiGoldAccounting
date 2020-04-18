@@ -60,7 +60,7 @@ export class Constants {
 }
 
 export class TransactionTypes {
-  static readonly Salar = "Salar";
+  static readonly Salary = "Salary";
 }
 
 export const LANGUAGES: Language[] = [
@@ -87,8 +87,8 @@ export const LANGUAGES: Language[] = [
 ];
 
 export const CsvImportHeader = {
-  TransactionType: "tipul tranzactiei",
-  Amount: "suma",
-  Date: "data",
-  Description: "descrierea"
+  TransactionType: "Tip tranzacție",
+  Amount: "Sumă",
+  Date: "Data",
+  Description: "Descriere"
 };

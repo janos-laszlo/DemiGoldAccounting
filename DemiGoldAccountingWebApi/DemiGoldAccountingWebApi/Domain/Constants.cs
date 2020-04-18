@@ -15,7 +15,7 @@ namespace DemiGoldAccountingWebApi.Domain
 
         public enum TransactionTypes
         {
-            Salar
+            Salary
         }
     }
 }

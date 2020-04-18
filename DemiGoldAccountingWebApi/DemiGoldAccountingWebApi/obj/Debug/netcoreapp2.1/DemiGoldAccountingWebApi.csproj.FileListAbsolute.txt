@@ -17,3 +17,4 @@ C:\Users\janos\OneDrive\Documents\Code\Visual Studio 2017\Projects\DemiGoldAccou
 C:\Users\janos\OneDrive\Documents\Code\Visual Studio 2017\Projects\DemiGoldAccounting\DemiGoldAccountingWebApi\DemiGoldAccountingWebApi\obj\Debug\netcoreapp2.1\DemiGoldAccountingWebApi.dll
 C:\Users\janos\OneDrive\Documents\Code\Visual Studio 2017\Projects\DemiGoldAccounting\DemiGoldAccountingWebApi\DemiGoldAccountingWebApi\obj\Debug\netcoreapp2.1\DemiGoldAccountingWebApi.pdb
 C:\Users\janos\OneDrive\Documents\Code\Visual Studio 2017\Projects\DemiGoldAccounting\DemiGoldAccountingWebApi\DemiGoldAccountingWebApi\obj\Debug\netcoreapp2.1\DemiGoldAccountingWebApi.genruntimeconfig.cache
+C:\Users\janos\OneDrive\Documents\Code\Visual Studio 2017\Projects\DemiGoldAccounting\DemiGoldAccountingWebApi\DemiGoldAccountingWebApi\bin\Debug\netcoreapp2.1\aws-beanstalk-tools-defaults.json

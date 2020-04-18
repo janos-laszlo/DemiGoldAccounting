@@ -136,7 +136,7 @@ namespace DemiGoldAccountingWebApi.Persistence
                 }
 
                 if (transaction.TransactionType != null &&
-                    transaction.TransactionType.Name == Constants.TransactionTypes.Salar.ToString() &&
+                    transaction.TransactionType.Name == Constants.TransactionTypes.Salary.ToString() &&
                     transaction.Employee == null && transaction.EmployeeId == 0)
                 {
                     throw new TranslatableException("EC24");

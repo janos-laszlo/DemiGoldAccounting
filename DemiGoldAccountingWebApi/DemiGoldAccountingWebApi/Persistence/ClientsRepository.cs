@@ -40,7 +40,7 @@ namespace DemiGoldAccountingWebApi.Persistence
                 throw new TranslatableException("EC9", id.ToString());
             }
 
-            var nonEmployeeRelatedTransactions = client.Transactions.Where(t => t.TransactionType.Name != Constants.TransactionTypes.Salar.ToString());
+            var nonEmployeeRelatedTransactions = client.Transactions.Where(t => t.TransactionType.Name != Constants.TransactionTypes.Salary.ToString());
             _db.Transactions.RemoveRange(nonEmployeeRelatedTransactions);
             client.Transactions.ForEach(t =>
             {
@@ -53,49 +53,51 @@ namespace DemiGoldAccountingWebApi.Persistence
             _db.Clients.Remove(client);
         }
 
-        public string SetProfilePicture(ProfilePicture profilePicture)
+        public void SetProfilePicture(ProfilePicture profilePicture)
         {
-            Client client = _db.Clients.FirstOrDefault(c => c.Id == profilePicture.EntityId);
-            if (client == null)
-            {
-                throw new TranslatableException("EC9", profilePicture.EntityId.ToString());
-            }
+            // Feature disabled.
 
-            string fileName = client.Name + ".png";
-            if (CloudStorageAccount.TryParse(_configuration[Constants.BlobStorageConnectionString], out CloudStorageAccount storageAccount))
-            {
-                CloudBlobClient cloudBlobClient = storageAccount.CreateCloudBlobClient();
-                CloudBlobContainer cloudBlobContainer = cloudBlobClient.GetContainerReference(_configuration[Constants.BlobStorageClientProfilePictureContainer]);
-                CloudBlockBlob cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(fileName);
-                using (Stream profilePictureStream = profilePicture.File.OpenReadStream())
-                {
-                    cloudBlockBlob.UploadFromStreamAsync(profilePictureStream)
-                        .GetAwaiter()
-                        .GetResult();
-                }
-                client.HasProfilePicture = true;
+            //Client client = _db.Clients.FirstOrDefault(c => c.Id == profilePicture.EntityId);
+            //if (client == null)
+            //{
+            //    throw new TranslatableException("EC9", profilePicture.EntityId.ToString());
+            //}
 
-                return fileName;
-            }
-            else
-            {
-                throw new TranslatableException("EC11");
-            }
+            //string fileName = client.Name + ".png";
+            //if (CloudStorageAccount.TryParse(_configuration[Constants.BlobStorageConnectionString], out CloudStorageAccount storageAccount))
+            //{
+            //    CloudBlobClient cloudBlobClient = storageAccount.CreateCloudBlobClient();
+            //    CloudBlobContainer cloudBlobContainer = cloudBlobClient.GetContainerReference(_configuration[Constants.BlobStorageClientProfilePictureContainer]);
+            //    CloudBlockBlob cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(fileName);
+            //    using (Stream profilePictureStream = profilePicture.File.OpenReadStream())
+            //    {
+            //        cloudBlockBlob.UploadFromStreamAsync(profilePictureStream)
+            //            .GetAwaiter()
+            //            .GetResult();
+            //    }
+            //    client.HasProfilePicture = true;
+            //}
+            //else
+            //{
+            //    throw new TranslatableException("EC11");
+            //}
         }
 
         private void DeleteClientProfilePicture(string clientName)
         {
-            if (CloudStorageAccount.TryParse(_configuration[Constants.BlobStorageConnectionString], out CloudStorageAccount storageAccount))
-            {
-                CloudBlobClient cloudBlobClient = storageAccount.CreateCloudBlobClient();
-                CloudBlobContainer cloudBlobContainer = cloudBlobClient.GetContainerReference(_configuration[Constants.BlobStorageClientProfilePictureContainer]);
-                CloudBlockBlob cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(clientName + ".png");
-                cloudBlockBlob.DeleteIfExistsAsync().GetAwaiter().GetResult();
-            }
-            else
-            {
-                throw new TranslatableException("EC12");
-            }
+            // Feature disabled.
+
+            //if (CloudStorageAccount.TryParse(_configuration[Constants.BlobStorageConnectionString], out CloudStorageAccount storageAccount))
+            //{
+            //    CloudBlobClient cloudBlobClient = storageAccount.CreateCloudBlobClient();
+            //    CloudBlobContainer cloudBlobContainer = cloudBlobClient.GetContainerReference(_configuration[Constants.BlobStorageClientProfilePictureContainer]);
+            //    CloudBlockBlob cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(clientName + ".png");
+            //    cloudBlockBlob.DeleteIfExistsAsync().GetAwaiter().GetResult();
+            //}
+            //else
+            //{
+            //    throw new TranslatableException("EC12");
+            //}
         }
     }
 }
