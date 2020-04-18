@@ -33,7 +33,7 @@ export class AuthenticationService {
 
   authenticate(password: string): Observable<boolean | {}> {
     this.user = {
-      username: "JanosLaszlo",
+      username: "JanosLaszlo1",
       password: password
     };
 

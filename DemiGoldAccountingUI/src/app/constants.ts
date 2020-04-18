@@ -13,7 +13,7 @@ declare global {
 
 export class Constants {
   static readonly BaseUrl =
-    "https://demigoldaccountingwebapi.azurewebsites.net";
+    "http://demigold-accounting.eu-central-1.elasticbeanstalk.com";
   //static readonly BaseUrl: string = "http://localhost:55097";
   
   // Storage URL
