@@ -28,7 +28,7 @@
     "core-js": "^2.5.7",
     "dependencies": "0.0.1",
     "ng-pick-datetime": "^7.0.0",
-    "ngx-papaparse": "^3.0.2",
+    "ngx-papaparse": "^7.0.0",
     "ngx-spinner": "6.1.2",
     "ngx-toastr": "9.1.1",
     "pdfmake": "^0.1.54",
